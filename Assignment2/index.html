@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LUMINA - Interactive High-Definition Image Gallery with dynamic lightbox, category filtering, and rich micro-interactions.">
+  <title>LUMINA — Interactive Image Gallery</title>
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient background lighting effects -->
+  <div class="ambient-glow glow-1" aria-hidden="true"></div>
+  <div class="ambient-glow glow-2" aria-hidden="true"></div>
+
+  <div class="app-wrapper">
+    <!-- Header Section -->
+    <header class="gallery-header">
+      <div class="header-badge">
+        <span class="badge-dot"></span>
+        <span>Interactive Showcase</span>
+      </div>
+      <h1 class="gallery-title">LUMINA <span class="gradient-text">GALLERY</span></h1>
+      <p class="gallery-subtitle">A curated exploration of natural landscapes, futuristic architecture, and cosmic visuals. Click any piece for full lightbox immersion.</p>
+      
+      <!-- Stats & Highlights Bar -->
+      <div class="stats-bar">
+        <div class="stat-item">
+          <span class="stat-number" id="total-count">8</span>
+          <span class="stat-label">Artworks</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number" id="categories-count">4</span>
+          <span class="stat-label">Collections</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number" id="likes-total">0</span>
+          <span class="stat-label">Favorites</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Controls Toolbar (Categories & Search) -->
+    <section class="controls-toolbar" aria-label="Gallery Controls">
+      <div class="filter-pills" id="category-filters" role="tablist">
+        <button class="filter-pill active" data-category="all" role="tab" aria-selected="true">
+          <span class="filter-icon">✦</span> All Works
+        </button>
+        <button class="filter-pill" data-category="nature" role="tab" aria-selected="false">
+          <span class="filter-icon">🍃</span> Nature
+        </button>
+        <button class="filter-pill" data-category="architecture" role="tab" aria-selected="false">
+          <span class="filter-icon">🏛️</span> Architecture
+        </button>
+        <button class="filter-pill" data-category="cyberpunk" role="tab" aria-selected="false">
+          <span class="filter-icon">🌆</span> Cyberpunk
+        </button>
+        <button class="filter-pill" data-category="cosmic" role="tab" aria-selected="false">
+          <span class="filter-icon">🪐</span> Cosmic
+        </button>
+      </div>
+
+      <div class="search-box">
+        <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="search-input" placeholder="Search title or tags..." aria-label="Search artworks">
+        <button id="clear-search" class="clear-btn" aria-label="Clear search" title="Clear search">&times;</button>
+      </div>
+    </section>
+
+    <!-- Image Gallery Grid -->
+    <main class="gallery-container">
+      <div class="gallery-grid" id="gallery-grid" aria-live="polite">
+        <!-- Rendered dynamically via JavaScript -->
+      </div>
+      <div id="no-results" class="no-results hidden">
+        <div class="no-results-icon">🔍</div>
+        <h3>No matching artworks found</h3>
+        <p>Try searching for a different keyword or reset filters.</p>
+        <button id="reset-filter-btn" class="btn-primary">Reset Filters</button>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="gallery-footer">
+      <p>Crafted with modern HTML5, CSS Grid, and Vanilla JavaScript &bull; Keyboard friendly</p>
+      <div class="keyboard-shortcuts-pill">
+        <span>Press <kbd>Esc</kbd> to exit lightbox</span> &bull; 
+        <span><kbd>&larr;</kbd> <kbd>&rarr;</kbd> to navigate</span>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Lightbox Modal Component -->
+  <div id="lightbox-modal" class="lightbox-modal" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
+    <div class="lightbox-backdrop" id="lightbox-backdrop"></div>
+    
+    <div class="lightbox-wrapper">
+      <!-- Lightbox Header Bar -->
+      <div class="lightbox-top-bar">
+        <div class="lightbox-meta">
+          <span class="lightbox-badge" id="lightbox-badge">Category</span>
+          <span class="lightbox-counter" id="lightbox-counter">1 / 8</span>
+        </div>
+        
+        <div class="lightbox-controls">
+          <button id="lightbox-like" class="control-btn" aria-label="Favorite this image" title="Favorite (L)">
+            <svg class="heart-icon" viewBox="0 0 24 24" width="20" height="20">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+          </button>
+          
+          <button id="lightbox-zoom" class="control-btn" aria-label="Toggle Zoom" title="Toggle Zoom (Z)">
+            <svg class="zoom-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <line x1="11" y1="8" x2="11" y2="14"></line>
+              <line x1="8" y1="11" x2="14" y2="11"></line>
+            </svg>
+          </button>
+
+          <button id="lightbox-close" class="control-btn close-btn" aria-label="Close Lightbox" title="Close (Esc)">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Main Display Area -->
+      <div class="lightbox-stage">
+        <!-- Previous Arrow -->
+        <button id="lightbox-prev" class="stage-nav-btn prev-btn" aria-label="Previous artwork" title="Previous (Left Arrow)">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+
+        <!-- Main Image Container -->
+        <div class="lightbox-image-container" id="image-container">
+          <div class="loader-spinner" id="lightbox-spinner" aria-hidden="true"></div>
+          <img id="lightbox-img" class="lightbox-img" src="" alt="Enlarged gallery view">
+        </div>
+
+        <!-- Next Arrow -->
+        <button id="lightbox-next" class="stage-nav-btn next-btn" aria-label="Next artwork" title="Next (Right Arrow)">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Caption & Info Bar -->
+      <div class="lightbox-caption-bar">
+        <div class="caption-info">
+          <h2 class="caption-title" id="lightbox-title">Artwork Title</h2>
+          <p class="caption-desc" id="lightbox-desc">Detailed photographic and artistic description will appear here.</p>
+        </div>
+        <div class="caption-credit">
+          <span class="photographer-label">Photographer</span>
+          <span class="photographer-name" id="lightbox-author">Unsplash Artist</span>
+        </div>
+      </div>
+
+      <!-- Interactive Thumbnail Filmstrip -->
+      <div class="lightbox-thumbnails-strip" id="lightbox-thumbnails" role="tablist" aria-label="Thumbnail previews">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
