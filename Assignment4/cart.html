@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amazon.com Shopping Cart | Mini Amazon</title>
+  <meta name="description" content="Review your Mini Amazon shopping cart with living plants and high-tech items, apply coupons, and checkout securely.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/modal.css">
+  <link rel="stylesheet" href="css/cart.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛒</text></svg>">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       AMAZON PRIMARY HEADER NAVIGATION
+       ========================================================================== -->
+  <header class="amazon-header">
+    <div class="header-top-bar">
+      <!-- Amazon Logo -->
+      <a href="index.html" class="header-brand" aria-label="Mini Amazon Home">
+        <svg class="brand-icon" viewBox="0 0 24 24">
+          <path d="M15.4 17.6c-4.4 3.2-10.7 1.7-14.7-.7-.3-.2-.3-.6 0-.8.2-.2.5-.2.7 0 3.7 2.2 9.5 3.5 13.6.7.4-.2.8.2.4.8zm1.1-.9c-.3-.4-1.9-.3-2.9-.1-.3 0-.4-.3-.2-.5 1.5-1.1 3.9-.8 4.2-.4.4.4.1 2.8-1.3 4-.2.2-.4.1-.3-.2.3-.9.5-2.4.5-2.8zM20 9.8c-.3-.2-.6-.2-.8.1-.8 1.1-2 2-3.4 2.5-1.4.5-2.9.6-4.3.2-2.9-.8-4.9-3.2-5.1-6.1 0-.3-.3-.6-.6-.6s-.6.3-.6.6c.3 3.5 2.7 6.4 6.1 7.3 1.6.4 3.3.3 4.9-.3 1.6-.6 3-1.6 3.9-2.9.2-.4.1-.7-.1-.9z"/>
+        </svg>
+        <div class="brand-text-wrap">
+          <span class="brand-title">amazon<span>prime</span></span>
+          <span class="brand-tagline">Living & Non-Living</span>
+        </div>
+      </a>
+
+      <!-- Delivery Location Mockup -->
+      <div class="header-deliver-to" title="Deliver to Rakesh - New Delhi 110001">
+        <svg class="deliver-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+          <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+        </svg>
+        <div class="deliver-text">
+          <span class="deliver-sub">Deliver to Rakesh</span>
+          <span class="deliver-location">New Delhi 110001</span>
+        </div>
+      </div>
+
+      <!-- Quick Search Bar Redirecting to Store -->
+      <div class="header-search-container">
+        <div class="search-input-wrapper">
+          <input
+            type="text"
+            id="header-search-input"
+            class="search-input"
+            placeholder="Looking for more living plants or tech gear? Search..."
+            autocomplete="off"
+            onkeydown="if(event.key === 'Enter') { window.location.href = 'index.html'; }"
+          >
+        </div>
+        <button class="search-submit-btn" onclick="window.location.href = 'index.html';" aria-label="Search">
+          <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Nav Actions -->
+      <div class="header-nav-actions">
+        <a href="index.html" class="nav-link-box hide-mobile">
+          <span class="nav-sub-label">Continue</span>
+          <span class="nav-main-label">Shopping</span>
+        </a>
+
+        <!-- Cart Button (Active) -->
+        <a href="cart.html" class="header-cart-btn" style="border-color: #fff;" aria-label="Shopping Cart">
+          <div class="cart-icon-wrapper">
+            <svg class="cart-svg" viewBox="0 0 24 24">
+              <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+            </svg>
+            <span class="cart-count-badge has-items" id="global-cart-badge">0</span>
+          </div>
+          <span class="cart-label">Cart</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Subnav -->
+    <nav class="amazon-subnav">
+      <div class="subnav-inner">
+        <div class="subnav-links-left">
+          <a href="index.html" class="subnav-item">
+            ← Back to Storefront
+          </a>
+          <a href="index.html" class="subnav-item highlight-living">
+            🌿 Living Things Catalog
+          </a>
+          <a href="index.html" class="subnav-item highlight-nonliving">
+            ⚡ Non-Living Tech Catalog
+          </a>
+        </div>
+        <div class="subnav-promo-right">
+          <span>⚡ Promo Code:</span>
+          <span class="promo-tag">AMAZON20</span>
+          <span>(20% Off)</span>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ==========================================================================
+       CART PAGE MAIN CONTENT
+       ========================================================================== -->
+  <main class="cart-page-main">
+
+    <!-- Empty Cart State -->
+    <div class="empty-cart-container" id="cart-empty-state" style="display: none;">
+      <div class="empty-cart-graphic">
+        <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+        </svg>
+      </div>
+      <h2 class="empty-cart-title">Your Amazon Cart is empty</h2>
+      <p class="empty-cart-subtitle">
+        Your shopping cart is currently empty. Explore our unique selection of living organisms (rare bonsai, aquarium life, indoor flora) and non-living gadgets.
+      </p>
+      <a href="index.html" class="btn-shop-now">
+        Continue Shopping Today's Deals
+      </a>
+    </div>
+
+    <!-- Active Cart Layout (Grid) -->
+    <div class="cart-layout-grid" id="cart-active-layout">
+
+      <!-- Left Column: Items Panel -->
+      <section class="cart-items-panel" aria-label="Items in your shopping cart">
+        <div class="cart-panel-header">
+          <div>
+            <h1 class="cart-main-heading">
+              Shopping Cart
+              <span class="cart-count-subtitle" id="cart-count-subtitle">(0 items)</span>
+            </h1>
+            <a href="index.html" style="font-size:0.85rem; margin-top:4px; display:inline-block;">
+              ← Continue shopping for more living plants &amp; electronics
+            </a>
+          </div>
+          <span class="cart-header-price-label">Price</span>
+        </div>
+
+        <!-- Dynamic Items Container -->
+        <div id="cart-items-list">
+          <!-- Injected via js/cart.js -->
+        </div>
+
+        <!-- Subtotal Footer -->
+        <div class="cart-items-subtotal-footer">
+          Subtotal (<span id="panel-subtotal-count">0</span> items):
+          <strong id="panel-subtotal-val">$0.00</strong>
+        </div>
+
+        <div style="margin-top: 14px; text-align: right;">
+          <button class="btn-clear-cart-all" id="btn-clear-entire-cart">
+            Clear all items from cart
+          </button>
+        </div>
+      </section>
+
+      <!-- Right Column: Order Summary Sticky Box -->
+      <aside class="cart-summary-panel" aria-label="Order summary and checkout">
+        <!-- Free Shipping Perk -->
+        <div class="shipping-perk-box">
+          <div class="shipping-perk-header">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+            <span id="shipping-perk-text">Your order qualifies for <strong>FREE Prime Delivery!</strong></span>
+          </div>
+          <div class="shipping-progress-bar">
+            <div class="shipping-progress-fill"></div>
+          </div>
+        </div>
+
+        <!-- Price Breakdown -->
+        <div class="summary-cost-rows">
+          <div class="summary-row">
+            <span>Subtotal (<span id="summary-items-count">0</span> items):</span>
+            <span id="summary-subtotal-amount" style="font-weight:700; color:#0f1111;">$0.00</span>
+          </div>
+
+          <div class="summary-row">
+            <span>Shipping &amp; Handling:</span>
+            <span style="color: var(--color-living-primary); font-weight:700;">FREE (Prime)</span>
+          </div>
+
+          <!-- Promo Code Discount Row (dynamic) -->
+          <div class="summary-row discount-row" id="summary-discount-row" style="display: none;">
+            <span>Coupon Savings:</span>
+            <span id="summary-discount-val">-$0.00</span>
+          </div>
+
+          <div class="summary-row">
+            <span>Estimated Tax (8%):</span>
+            <span id="summary-tax-amount">$0.00</span>
+          </div>
+
+          <div class="summary-row total-row">
+            <span>Order Total:</span>
+            <span id="summary-grand-total">$0.00</span>
+          </div>
+        </div>
+
+        <!-- Promo Code Input -->
+        <div class="promo-code-section">
+          <label for="promo-code-input" class="promo-label">Apply Promo Code or Gift Card:</label>
+          <div class="promo-input-group">
+            <input
+              type="text"
+              id="promo-code-input"
+              class="promo-input"
+              placeholder="e.g. AMAZON20"
+              autocomplete="off"
+            >
+            <button type="button" class="btn-apply-promo" id="btn-apply-promo">Apply</button>
+          </div>
+          <div class="promo-message" id="promo-status-msg"></div>
+        </div>
+
+        <!-- Proceed to Checkout Button -->
+        <button type="button" class="btn-proceed-checkout" id="btn-proceed-checkout">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+          </svg>
+          Proceed to Checkout
+        </button>
+
+        <div class="security-seal-note">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+          </svg>
+          <span>256-bit Secure SSL Checkout &bull; Prime Guarantee</span>
+        </div>
+      </aside>
+
+    </div>
+
+    <!-- Saved for Later Section -->
+    <section class="saved-items-section" id="saved-for-later-section" style="display: none;">
+      <h3 class="saved-section-title">Saved for Later</h3>
+      <div id="saved-items-grid"></div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       SIMULATED CHECKOUT MODAL
+       ========================================================================== -->
+  <div class="modal-backdrop" id="checkout-sim-modal" role="dialog" aria-modal="true" aria-labelledby="checkout-title">
+    <div class="checkout-modal-dialog">
+      <button class="modal-close-btn" id="checkout-modal-close" aria-label="Close">×</button>
+
+      <!-- Review State -->
+      <div id="checkout-review-view">
+        <div class="checkout-header">
+          <svg width="28" height="28" fill="var(--color-amazon-gold)" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+          </svg>
+          <h3 id="checkout-title">Review &amp; Place Your Order</h3>
+        </div>
+
+        <div class="checkout-step-card">
+          <span class="step-card-title">1. Shipping Address</span>
+          <span class="step-card-content">Rakesh Sharma &bull; 42 Green Tech Avenue, Connaught Place, New Delhi 110001, India</span>
+        </div>
+
+        <div class="checkout-step-card">
+          <span class="step-card-title">2. Payment Method</span>
+          <span class="step-card-content">Amazon Pay UPI &bull; Verified Bank Ending in 8842 &bull; Prime 5% Cashback Active</span>
+        </div>
+
+        <div class="checkout-step-card">
+          <span class="step-card-title">3. Delivery Guarantee</span>
+          <span class="step-card-content">Guaranteed FREE Overnight Delivery Tomorrow by 8:00 AM &bull; Live Pet &amp; Plant Climate Packaging Included</span>
+        </div>
+
+        <div style="margin: 20px 0; display: flex; align-items: baseline; justify-content: space-between;">
+          <span style="font-size: 1.1rem; font-weight: 700;">Order Total:</span>
+          <span id="checkout-order-total-val" style="font-size: 1.6rem; font-family: var(--font-primary); font-weight: 800; color: var(--color-amazon-dark-red);">$0.00</span>
+        </div>
+
+        <button type="button" class="btn-proceed-checkout" id="btn-place-order" style="padding: 14px;">
+          Place Your Order Now
+        </button>
+      </div>
+
+      <!-- Success State -->
+      <div id="checkout-success-view" class="checkout-success-view" style="display: none;">
+        <div class="success-check-circle">
+          <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+            <path d="M5 13l4 4L19 7"/>
+          </svg>
+        </div>
+        <h3 style="font-size: 1.6rem; font-weight: 800; font-family: var(--font-primary);">Order Placed Successfully!</h3>
+        <p style="color: var(--color-text-secondary); max-width: 440px;">
+          Thank you, Rakesh! Your order confirmation has been dispatched. Your living plants and tech gadgets are being prepared with climate packaging.
+        </p>
+        <div style="background: #f1f5f9; padding: 10px 20px; border-radius: var(--radius-md); font-family: monospace; font-weight: 700; font-size: 1.05rem;">
+          Order ID: <span id="order-confirmed-id">AMZ-849204</span>
+        </div>
+        <a href="index.html" class="btn-shop-now" style="margin-top: 12px;">
+          Continue Shopping
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="amazon-toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- ==========================================================================
+       AMAZON FOOTER
+       ========================================================================== -->
+  <footer class="amazon-footer">
+    <div class="footer-back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
+      Back to top
+    </div>
+    <div class="footer-bottom-bar">
+      <div class="footer-brand-center">
+        amazon<span>prime</span>
+      </div>
+      <p class="footer-copyright">
+        © 2026 Mini Amazon Store Inc. Built for Internship Assignment: E-Commerce Front Page with Living &amp; Non-Living Products, Popup Modal, and LocalStorage Cart.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/products.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>

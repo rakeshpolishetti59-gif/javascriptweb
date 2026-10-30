@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amazon.com: Living Organisms & High-Tech Essentials | Mini Amazon</title>
+  <meta name="description" content="Shop Mini Amazon's premier collection of living things (plants, bonsai, aquatic kits) and non-living things (smart tech, headphones, mechanical keyboards) with free Prime delivery.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/modal.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📦</text></svg>">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       AMAZON PRIMARY HEADER NAVIGATION
+       ========================================================================== -->
+  <header class="amazon-header">
+    <div class="header-top-bar">
+      <!-- Amazon Logo -->
+      <a href="index.html" class="header-brand" aria-label="Mini Amazon Home">
+        <svg class="brand-icon" viewBox="0 0 24 24">
+          <path d="M15.4 17.6c-4.4 3.2-10.7 1.7-14.7-.7-.3-.2-.3-.6 0-.8.2-.2.5-.2.7 0 3.7 2.2 9.5 3.5 13.6.7.4-.2.8.2.4.8zm1.1-.9c-.3-.4-1.9-.3-2.9-.1-.3 0-.4-.3-.2-.5 1.5-1.1 3.9-.8 4.2-.4.4.4.1 2.8-1.3 4-.2.2-.4.1-.3-.2.3-.9.5-2.4.5-2.8zM20 9.8c-.3-.2-.6-.2-.8.1-.8 1.1-2 2-3.4 2.5-1.4.5-2.9.6-4.3.2-2.9-.8-4.9-3.2-5.1-6.1 0-.3-.3-.6-.6-.6s-.6.3-.6.6c.3 3.5 2.7 6.4 6.1 7.3 1.6.4 3.3.3 4.9-.3 1.6-.6 3-1.6 3.9-2.9.2-.4.1-.7-.1-.9z"/>
+        </svg>
+        <div class="brand-text-wrap">
+          <span class="brand-title">amazon<span>prime</span></span>
+          <span class="brand-tagline">Living & Non-Living</span>
+        </div>
+      </a>
+
+      <!-- Delivery Location Mockup -->
+      <div class="header-deliver-to" title="Deliver to Rakesh - New Delhi 110001">
+        <svg class="deliver-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+          <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+        </svg>
+        <div class="deliver-text">
+          <span class="deliver-sub">Deliver to Rakesh</span>
+          <span class="deliver-location">New Delhi 110001</span>
+        </div>
+      </div>
+
+      <!-- Live Search Bar -->
+      <div class="header-search-container">
+        <select class="search-category-select" id="search-category-select" aria-label="Select search category">
+          <option value="all">All Departments</option>
+          <option value="living">🌿 Living Things</option>
+          <option value="non-living">⚡ Non-Living Things</option>
+          <option value="Plants">🪴 Indoor Plants</option>
+          <option value="Aquatics">🐠 Aquatics & Pets</option>
+          <option value="Gardening">🌱 Herbs & Gardening</option>
+          <option value="Audio">🎧 Audio & Sound</option>
+          <option value="Electronics">💻 Electronics</option>
+          <option value="Smart Home">🏠 Smart Home & Living</option>
+          <option value="Home & Kitchen">☕ Kitchen & Barista</option>
+        </select>
+        <div class="search-input-wrapper">
+          <input
+            type="text"
+            id="header-search-input"
+            class="search-input"
+            placeholder="Search living plants, aquatic pets, Sony headphones, mechanical keyboards..."
+            autocomplete="off"
+            aria-label="Search Mini Amazon"
+          >
+          <button class="search-clear-btn" id="search-clear-btn" aria-label="Clear search input">×</button>
+        </div>
+        <button class="search-submit-btn" id="header-search-btn" aria-label="Execute search">
+          <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Header Nav Actions (Right) -->
+      <div class="header-nav-actions">
+        <a href="#catalog-controls" class="nav-link-box hide-mobile">
+          <span class="nav-sub-label">Returns</span>
+          <span class="nav-main-label">&amp; Orders</span>
+        </a>
+
+        <a href="#catalog-controls" class="nav-link-box hide-mobile">
+          <span class="nav-sub-label">Prime</span>
+          <span class="nav-main-label">Membership</span>
+        </a>
+
+        <!-- Cart Button -->
+        <a href="cart.html" class="header-cart-btn" id="header-cart-link" aria-label="Shopping Cart">
+          <div class="cart-icon-wrapper">
+            <svg class="cart-svg" viewBox="0 0 24 24">
+              <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+            </svg>
+            <span class="cart-count-badge" id="global-cart-badge">0</span>
+          </div>
+          <span class="cart-label">Cart</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Subnav Bar -->
+    <nav class="amazon-subnav" aria-label="Sub navigation">
+      <div class="subnav-inner">
+        <div class="subnav-links-left">
+          <a href="#catalog-controls" class="subnav-item active">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+            All Products
+          </a>
+          <a href="#catalog-controls" class="subnav-item highlight-living" onclick="activateFilter('living'); return false;">
+            🌿 Living Things
+          </a>
+          <a href="#catalog-controls" class="subnav-item highlight-nonliving" onclick="activateFilter('non-living'); return false;">
+            ⚡ Non-Living Tech
+          </a>
+          <a href="#catalog-controls" class="subnav-item" onclick="activateFilter('Plants'); return false;">
+            🪴 Rare Bonsai & Plants
+          </a>
+          <a href="#catalog-controls" class="subnav-item" onclick="activateFilter('Electronics'); return false;">
+            💻 Gadgets & Gear
+          </a>
+          <a href="cart.html" class="subnav-item">
+            🛒 View Cart
+          </a>
+        </div>
+
+        <div class="subnav-promo-right">
+          <span>⚡ Lightning Coupon:</span>
+          <span class="promo-tag">AMAZON20</span>
+          <span>(20% Off Checkout)</span>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ==========================================================================
+       MAIN STOREFRONT CONTAINER
+       ========================================================================== -->
+  <main class="home-main-container">
+
+    <!-- Hero Promotional Banner with Deal Countdown -->
+    <section class="hero-banner-section" aria-label="Special Deals Banner">
+      <div class="hero-content-wrapper">
+        <div class="hero-text-col">
+          <div class="hero-badge-pill">
+            <span>⚡ PRIME EXCLUSIVE CURATION</span>
+          </div>
+          <h1 class="hero-headline">
+            The Marketplace for <br>
+            <span class="living-highlight">Living Organisms</span> &amp; <span class="nonliving-highlight">Smart Tech</span>
+          </h1>
+          <p class="hero-description">
+            Experience the harmony of nature and technology. From hand-trained Japanese Juniper bonsai trees and Betta ecosystems to ANC headphones and custom mechanical keyboards.
+          </p>
+          <div class="hero-cta-group">
+            <a href="#catalog-controls" class="btn-hero-living" id="hero-living-btn">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+              </svg>
+              Explore Living Organisms (7)
+            </a>
+            <a href="#catalog-controls" class="btn-hero-nonliving" id="hero-nonliving-btn">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M13 3L4 14h7v7l9-11h-7V3z"/>
+              </svg>
+              Explore Non-Living Tech (7)
+            </a>
+          </div>
+        </div>
+
+        <!-- Flash Deal Countdown Card -->
+        <div class="hero-deal-card">
+          <div class="deal-card-header">
+            <div class="deal-card-title">
+              <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M7 2v11h3v9l7-12h-4l4-8z"/>
+              </svg>
+              Prime Lightning Deal
+            </div>
+          </div>
+
+          <div class="deal-countdown-box">
+            <div class="countdown-unit">
+              <span class="countdown-num" id="deal-countdown-hours">05</span>
+              <span class="countdown-lbl">Hours</span>
+            </div>
+            <span class="countdown-sep">:</span>
+            <div class="countdown-unit">
+              <span class="countdown-num" id="deal-countdown-mins">42</span>
+              <span class="countdown-lbl">Mins</span>
+            </div>
+            <span class="countdown-sep">:</span>
+            <div class="countdown-unit">
+              <span class="countdown-num" id="deal-countdown-secs">18</span>
+              <span class="countdown-lbl">Secs</span>
+            </div>
+          </div>
+
+          <div class="deal-card-perks">
+            <div class="perk-item">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path d="M5 13l4 4L19 7"/>
+              </svg>
+              <span>Overnight Plant Shipping</span>
+            </div>
+            <div class="perk-item">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path d="M5 13l4 4L19 7"/>
+              </svg>
+              <span>Up to 30% Off Tech</span>
+            </div>
+            <div class="perk-item">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path d="M5 13l4 4L19 7"/>
+              </svg>
+              <span>Living Pet Safe Arrival</span>
+            </div>
+            <div class="perk-item">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path d="M5 13l4 4L19 7"/>
+              </svg>
+              <span>Free 30-Day Returns</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Catalog Controls: Filter Pills, Search Status & Sort -->
+    <section class="catalog-controls-container" id="catalog-controls">
+      <div class="filter-pills-row" role="tablist">
+        <span class="filter-pill-label">Category Filter:</span>
+        <button class="filter-pill active" data-filter="all">
+          All Products <span class="pill-count">14</span>
+        </button>
+        <button class="filter-pill pill-living" data-filter="living">
+          🌿 All Living Things <span class="pill-count">7</span>
+        </button>
+        <button class="filter-pill pill-nonliving" data-filter="non-living">
+          ⚡ All Non-Living Tech <span class="pill-count">7</span>
+        </button>
+        <button class="filter-pill" data-filter="Plants">
+          🪴 Plants &amp; Bonsai <span class="pill-count">4</span>
+        </button>
+        <button class="filter-pill" data-filter="Aquatics">
+          🐠 Aquatics &amp; Life <span class="pill-count">2</span>
+        </button>
+        <button class="filter-pill" data-filter="Audio">
+          🎧 Audio &amp; Sound <span class="pill-count">1</span>
+        </button>
+        <button class="filter-pill" data-filter="Electronics">
+          💻 Gadgets &amp; Drones <span class="pill-count">3</span>
+        </button>
+        <button class="filter-pill" data-filter="Smart Home">
+          🏠 Smart Home <span class="pill-count">2</span>
+        </button>
+      </div>
+
+      <div class="controls-secondary-row">
+        <div class="results-info-group">
+          <span class="results-count-text" id="results-count-display">
+            Showing <strong>14</strong> of <strong>14</strong> products
+          </span>
+        </div>
+
+        <div class="controls-actions-group">
+          <!-- In-Stock Toggle -->
+          <label class="stock-toggle-label">
+            <input type="checkbox" id="filter-in-stock-only" class="stock-toggle-input">
+            <span>In-Stock Only</span>
+          </label>
+
+          <!-- Sorting Dropdown -->
+          <div class="sort-select-wrapper">
+            <label for="catalog-sort-select" class="sort-select-label">Sort by:</label>
+            <select id="catalog-sort-select" class="sort-select">
+              <option value="featured">Featured Picks</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="rating">Avg. Customer Review</option>
+              <option value="discount">Biggest Savings %</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Cards Grid -->
+    <section class="products-grid" id="products-grid" aria-label="Product listings">
+      <!-- Injected dynamically by js/app.js -->
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       PRODUCT DETAILS POPUP MODAL COMPONENT
+       ========================================================================== -->
+  <div class="modal-backdrop" id="product-detail-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="product-modal-dialog">
+      <!-- Close Button -->
+      <button class="modal-close-btn" id="modal-close-button" aria-label="Close modal">×</button>
+
+      <div class="modal-content-grid">
+        <!-- Left: Image Gallery -->
+        <div class="modal-gallery-col">
+          <div class="modal-main-image-wrap">
+            <img id="modal-image-main" class="modal-main-image" src="" alt="Product view">
+          </div>
+          <div class="modal-thumbnails-row" id="modal-thumbnails-container">
+            <!-- Thumbnails injected via js -->
+          </div>
+        </div>
+
+        <!-- Right: Information & Controls -->
+        <div class="modal-info-col">
+          <div class="modal-badges-row" id="modal-badge-container">
+            <!-- Type Pill & Category Badges -->
+          </div>
+
+          <h2 class="modal-title" id="modal-title">Product Title</h2>
+
+          <div class="modal-ratings-summary" id="modal-rating-container">
+            <!-- Stars & Reviews -->
+          </div>
+
+          <div class="modal-price-block">
+            <span class="modal-price-current" id="modal-price-current">$0.00</span>
+            <span class="modal-price-original" id="modal-price-original"></span>
+            <span class="modal-savings-tag" id="modal-savings-tag"></span>
+          </div>
+
+          <p class="modal-description" id="modal-description"></p>
+
+          <!-- Specialty Dynamic Box: Living Organism Care vs Non-Living Specs -->
+          <div class="specialty-details-card" id="modal-specialty-container">
+            <!-- Dynamic Care Guide or Tech Specs -->
+          </div>
+
+          <!-- Purchase Controls -->
+          <div class="modal-purchase-section">
+            <div class="modal-stock-status" id="modal-stock-status">In Stock</div>
+
+            <div class="modal-quantity-row">
+              <label for="modal-qty-input" style="font-size:0.9rem; font-weight:700;">Quantity:</label>
+              <div class="quantity-stepper">
+                <button type="button" class="btn-step" id="modal-qty-minus">−</button>
+                <input type="number" class="step-input" id="modal-qty-input" value="1" min="1" max="99" readonly>
+                <button type="button" class="btn-step" id="modal-qty-plus">+</button>
+              </div>
+            </div>
+
+            <div class="modal-action-buttons">
+              <button type="button" class="btn-modal-add" id="modal-add-to-cart-btn">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                </svg>
+                Add to Cart
+              </button>
+              <a href="cart.html" class="btn-modal-view-cart">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                </svg>
+                Go to Cart
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="amazon-toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- ==========================================================================
+       AMAZON FOOTER
+       ========================================================================== -->
+  <footer class="amazon-footer">
+    <div class="footer-back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
+      Back to top
+    </div>
+
+    <div class="footer-main-links">
+      <div>
+        <h4 class="footer-column-title">Get to Know Us</h4>
+        <ul class="footer-links-list">
+          <li><a href="#catalog-controls">About Mini Amazon</a></li>
+          <li><a href="#catalog-controls">Living Flora &amp; Fauna Ethic</a></li>
+          <li><a href="#catalog-controls">Sustainable Prime Shipping</a></li>
+          <li><a href="#catalog-controls">Careers &amp; Internships</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-column-title">Living Organisms Program</h4>
+        <ul class="footer-links-list">
+          <li><a href="#catalog-controls" onclick="activateFilter('Plants'); return false;">Rare Bonsai Care Guides</a></li>
+          <li><a href="#catalog-controls" onclick="activateFilter('Aquatics'); return false;">Betta &amp; Aquatic Packing Policy</a></li>
+          <li><a href="#catalog-controls" onclick="activateFilter('Gardening'); return false;">Organic Kitchen Herbs</a></li>
+          <li><a href="#catalog-controls">Live Plant Arrival Guarantee</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-column-title">Tech &amp; Electronics</h4>
+        <ul class="footer-links-list">
+          <li><a href="#catalog-controls" onclick="activateFilter('Audio'); return false;">Noise-Canceling Audio</a></li>
+          <li><a href="#catalog-controls" onclick="activateFilter('Electronics'); return false;">Custom Mechanical Keyboards</a></li>
+          <li><a href="#catalog-controls" onclick="activateFilter('Smart Home'); return false;">Robot Vacuum Cleaners</a></li>
+          <li><a href="#catalog-controls">2-Year Tech Warranty</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-column-title">Let Us Help You</h4>
+        <ul class="footer-links-list">
+          <li><a href="cart.html">Your Amazon Cart</a></li>
+          <li><a href="cart.html">Returns &amp; Replacements</a></li>
+          <li><a href="cart.html">Manage Prime Membership</a></li>
+          <li><a href="cart.html">Help &amp; Customer Support</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom-bar">
+      <div class="footer-brand-center">
+        amazon<span>prime</span>
+      </div>
+      <p class="footer-copyright">
+        © 2026 Mini Amazon Store Inc. Built for Internship Assignment: E-Commerce Front Page with Living &amp; Non-Living Products, Popup Modal, and LocalStorage Cart.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/products.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
